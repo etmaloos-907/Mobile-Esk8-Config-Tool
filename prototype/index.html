@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-skate ESC Configurator — UI Prototype</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, sans-serif;
+      background: #10151c;
+      color: #f3f6fa;
+      font-synthesis: none;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      min-height: 100vh;
+      margin: 0;
+      place-items: center;
+      background: #10151c;
+    }
+
+    .screen {
+      width: min(100vw, 320px);
+      min-height: min(100vh, 520px);
+      padding: 16px;
+      border: 1px solid #354150;
+      border-radius: 18px;
+      background: #19212b;
+      box-shadow: 0 16px 48px #0008;
+    }
+
+    header, .row, .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    header { margin-bottom: 16px; }
+    h1 { margin: 0; font-size: 17px; }
+    h2 { margin: 0; font-size: 14px; }
+    p { margin: 8px 0 0; color: #aebbc9; font-size: 12px; line-height: 1.4; }
+
+    .badge {
+      padding: 5px 8px;
+      border: 1px solid #775c2b;
+      border-radius: 999px;
+      color: #ffd47d;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .card {
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid #354150;
+      border-radius: 12px;
+      background: #202a36;
+    }
+
+    .notice {
+      border-color: #775c2b;
+      background: #30291d;
+    }
+
+    .notice strong { color: #ffd47d; }
+    .muted { color: #aebbc9; }
+    .value { color: #f3f6fa; font-size: 12px; text-align: right; }
+    .checklist { display: grid; gap: 10px; margin-top: 12px; }
+    label { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.35; }
+    input[type="checkbox"] { width: 16px; height: 16px; margin: 0; accent-color: #65c6a4; }
+
+    button {
+      width: 100%;
+      min-height: 40px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 9px;
+      background: #354150;
+      color: #aebbc9;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    button:disabled { cursor: not-allowed; opacity: .72; }
+    footer { margin-top: 14px; color: #8392a2; font-size: 10px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <header>
+      <h1>ESC Setup</h1>
+      <span class="badge">DEMO · NO LINK</span>
+    </header>
+
+    <section class="card notice" aria-live="polite">
+      <div class="section-title">
+        <h2>Not connected</h2>
+        <span aria-hidden="true">●</span>
+      </div>
+      <p>This prototype does not communicate with or change your ESC.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Safe setup check</h2>
+        <span class="muted">Required</span>
+      </div>
+      <div class="checklist">
+        <label><input type="checkbox"> Skateboard is stopped and secured.</label>
+        <label><input type="checkbox"> Motor output is disabled.</label>
+      </div>
+    </section>
+
+    <section class="card" aria-disabled="true">
+      <div class="row">
+        <h2>Current settings</h2>
+        <span class="badge">LOCKED</span>
+      </div>
+      <p>Values will remain unavailable until the ESC protocol and hardware-safe limits are verified.</p>
+      <div class="row" style="margin-top: 12px">
+        <span class="muted">Motor current</span>
+        <span class="value">— A</span>
+      </div>
+      <div class="row" style="margin-top: 8px">
+        <span class="muted">Battery current</span>
+        <span class="value">— A</span>
+      </div>
+      <button type="button" disabled>Write settings unavailable</button>
+    </section>
+
+    <footer>UI mock only · No ESC connection · No settings writes</footer>
+  </main>
+</body>
+</html>
